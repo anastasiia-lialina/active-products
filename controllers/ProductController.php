@@ -22,10 +22,8 @@ class ProductController extends \yii\web\Controller
      */
     public function beforeAction($action)
     {
-        Yii::$app->set('response', [
-            'class' => Response::class,
-            'format' => 'json',
-        ]);
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON;
 
         return parent::beforeAction($action);
     }
@@ -33,9 +31,8 @@ class ProductController extends \yii\web\Controller
     /**
      * Нужна проверка безопасности и возврат ошибок
      * @param int $categoryId
-     * @return mixed
      */
-    public function actionActive(int $categoryId)
+    public function actionActive(int $categoryId): array
     {
         $cache = Yii::$app->cache;
         $key = "active_product_{$categoryId}";
