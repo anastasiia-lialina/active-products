@@ -31,17 +31,6 @@ class ProductController extends Controller
     }
 
     /**
-     * @inheritdoc
-     */
-    public function beforeAction($action)
-    {
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-
-        return parent::beforeAction($action);
-    }
-
-    /**
      * Нужна проверка безопасности и возврат ошибок
      * @param int $categoryId
      */
