@@ -38,7 +38,6 @@ class ProductController extends Controller
     {
         $cache = Yii::$app->cache;
         $key = "active_product_{$categoryId}";
-        $products = $cache->set($key, [1,2,3]);
         $products = $cache->get($key);
         return $products === false ? [] : $products;
     }
